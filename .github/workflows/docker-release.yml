@@ -32,16 +32,6 @@ jobs:
             exit 0
           fi
 
-      - name: Download release tarball
-        run: |
-          curl -L -o release.tar.gz \
-            https://github.com/rhasspy/wyoming-satellite/archive/refs/tags/$(cat version.txt).tar.gz
-          mkdir source && tar -xzf release.tar.gz -C source --strip-components=1
-
-      - name: Add custom Dockerfile
-        run: |
-          cp ./Dockerfile ./source/
-
       - name: Log in to Docker Hub
         uses: docker/login-action@v3
         with:
@@ -51,8 +41,10 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
-          context: ./source
+          context: .
           push: true
+          build-args: |
+            SATELLITE_VERSION=${{ steps.get_release.outputs.version }}
           tags: |
             lunyaadev/rhasspy-wyoming-satellite:${{ steps.get_release.outputs.version }}
             lunyaadev/rhasspy-wyoming-satellite:latest
