@@ -59,6 +59,12 @@ services:
 
 > Replace `plughw:4,0` with the actual card/device numbers from your system.
 
+### More Configuration
+
+For more configuration options, see [github.com/rhasspy/wyoming-satellite](https://github.com/rhasspy/wyoming-satellite/)
+
+The docker images also contains the [Audio Enhancements](https://github.com/rhasspy/wyoming-satellite#audio-enhancements)
+
 ### Start the Docker stack
 
 ```sh
