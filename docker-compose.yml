@@ -15,5 +15,8 @@ services:
         "--uri", "tcp://0.0.0.0:10700",
         "--mic-command", "arecord -D plughw:4,0 -r 16000 -c 1 -f S16_LE -t raw",
         "--snd-command", "aplay -D plughw:4,0 -r 22050 -c 1 -f S16_LE -t raw",
+        "--awake-wav", "./sounds/awake.wav",
+        "--done-wav", "./sounds/done.wav",
+        "--timer-finished-wav", "./sounds/timer_finished.wav",
         "--debug",
       ]
