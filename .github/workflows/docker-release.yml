@@ -10,6 +10,8 @@ on:
 jobs:
   check:
     runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.get_release.outputs.version }}
     steps:
       - name: Check out
         uses: actions/checkout@v4
