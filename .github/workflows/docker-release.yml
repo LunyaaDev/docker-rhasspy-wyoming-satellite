@@ -49,7 +49,7 @@ jobs:
           context: .
           push: true
           build-args: |
-            SATELLITE_VERSION=${{ steps.get_release.outputs.version }}
+            SATELLITE_VERSION=${{ needs.check.outputs.version }}
           tags: |
-            lunyaadev/rhasspy-wyoming-satellite:${{ steps.get_release.outputs.version }}
+            lunyaadev/rhasspy-wyoming-satellite:${{ needs.check.outputs.version }}
             lunyaadev/rhasspy-wyoming-satellite:latest
